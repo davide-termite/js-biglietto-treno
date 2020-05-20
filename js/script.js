@@ -1,22 +1,26 @@
 // Kilometers
 var km = parseInt(prompt ("Quanti km devi percorrere?"));
 
-if ((km <= 0) || isNaN(km)) {
-  alert("Inserisci una distanza valida!")
-  document.getElementById('ticket-price').innerHTML = "Ricarica la pagina";
-  document.getElementById('ticket-discount').innerHTML = "Ricarica la pagina";
-}
-
 // Pricing
-var ticketFullPrice = km * 0.21;
+var ticketPrice = km * 0.21;
+var ticketFullPrice = ticketPrice.toFixed(2);
 
-// console.log(ticketFullPrice);
+console.log(ticketFullPrice);
 
 // Age
 var age = prompt("Quanti anni hai?");
 
-if ((age <= 0) || isNaN(age)) {
-  alert("Inserisci un'età valida!")
+
+// Data Check
+if (((age <= 0) || isNaN(age)) || ((km <= 0) || isNaN(km))){
+  alert("Hai inserito uno o più dati non validi!");
+
+  var error = document.createElement('h2');
+  error.innerHTML = "!!ERROR!!";
+  document.getElementById("container").appendChild(error);
+
+  document.getElementById("btn").innerHTML = "<b>Ricarica pagina</b>"
+
   document.getElementById('ticket-price').innerHTML = "Ricarica la pagina";
   document.getElementById('ticket-discount').innerHTML = "Ricarica la pagina";
 }
